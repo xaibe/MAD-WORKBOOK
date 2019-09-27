@@ -1,0 +1,1 @@
+Source code for Lecture 5 <a href="https://github.com/alamgirqazi/mobile-application-development-course/blob/master/lecture%205/Lecture%205%20-%20Mobile%20Application%20Development.pdf" target="_blank"> Lifecycle methods in Angular and Ionic</a>
