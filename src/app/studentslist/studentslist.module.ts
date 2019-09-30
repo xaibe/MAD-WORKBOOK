@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
+import { NgModule } from '@angular/core';
 import { StudentslistPage } from './studentslist.page';
+import { StudentslistitemComponent } from './studentslistitem/studentslistitem.component';
 
 const routes: Routes = [
   {
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [StudentslistPage]
+  declarations: [StudentslistPage, StudentslistitemComponent]
 })
 export class StudentslistPageModule {}
