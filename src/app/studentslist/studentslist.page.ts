@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-studentslist',
   templateUrl: './studentslist.page.html',
   styleUrls: ['./studentslist.page.scss']
 })
 export class StudentslistPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
+
   students = [
     { id: '3198/FBAS/BSSE/F16', name: 'SAAD FAROOQ' },
     { id: '3199/FBAS/BSSE/F16', name: 'ABDULLAH KHAN' },
@@ -64,4 +67,15 @@ export class StudentslistPage implements OnInit {
     { id: '3343/FBAS/BSSE/F16', name: 'Muhammad Hamza Khalil' }
   ];
   ngOnInit() {}
+
+  changeUrl(user) {
+    const id = user.id.substring(0, 4);
+    const url = `studentslist/${id}`;
+
+    this.router.navigateByUrl(url);
+
+    // or
+
+    // this.router.navigate([url]);
+  }
 }
