@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add new student</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div>
+      <label for="name"> Name</label>
+      <input type="text" id="name" name="name" ngModel required />
+    </div>
+    <div class="col-sm-2 form-group">
+      <label for="id">Student ID</label>
+      <input type="text" id="id" name="id" ngModel />
+    </div>
+    <button class="btn btn-success" type="submit">Save</button>
+  </form> -->
+  <form [formGroup]="studentsForm">
+    <div>
+      <label for="name"> Name</label>
+      <input type="text" formControlName="name" />
+    </div>
+    <div>
+      <label for="id">Student ID</label>
+      <input type="text" formControlName="id" />
+    </div>
+    <div>
+      <label for="email">Student Email</label>
+      <input type="text" formControlName="email" />
+    </div>
+    <button class="btn btn-success" (click)="saveStudent()" type="submit">Save</button>
+  </form>
+
+  <div *ngFor="let s of listOfStudents">
+
+    NAME: {{s.name}} |
+    ID: {{s.id}}
+  </div>
+
+</ion-content>
