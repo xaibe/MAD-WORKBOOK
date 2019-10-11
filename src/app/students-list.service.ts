@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StudentsListService {
- students = [
+  students = [
     { id: '3198/FBAS/BSSE/F16', name: 'SAAD FAROOQ' },
     { id: '3199/FBAS/BSSE/F16', name: 'ABDULLAH KHAN' },
     { id: '3200/FBAS/BSSE/F16', name: 'AHSAN EJAZ' },
@@ -61,15 +61,19 @@ export class StudentsListService {
     { id: '3343/FBAS/BSSE/F16', name: 'Muhammad Hamza Khalil' }
   ];
 
+  constructor() {}
 
-  constructor() { }
- 
- get getStudents(){
-   return this.students;
- }
+  get getStudents() {
+    return this.students;
+  }
 
- getAllStudents(){
-   return this.students;
- }
+  getAllStudents() {
+    return this.students;
+  }
 
+  deleteAStudent(id) {
+    this.students = this.students.filter(e => {
+      return e.id !== id;
+    });
+  }
 }

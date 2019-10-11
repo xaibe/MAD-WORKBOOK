@@ -18,9 +18,13 @@ export class StudentslistPage implements OnInit {
 
   ngOnInit() {
     // this.students = this.studentsListService.getStudents;
-    this.students = this.studentsListService.getAllStudents();
+    // this.students = this.studentsListService.getAllStudents();
   }
 
+  ionViewDidEnter() {
+    console.log('view Enter');
+    this.students = this.studentsListService.getAllStudents();
+  }
   changeUrl(user) {
     const id = user.id.substring(0, 4);
     const url = `studentslist/${id}`;
