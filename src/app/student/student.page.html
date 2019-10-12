@@ -5,17 +5,18 @@
 
     </ion-buttons>
     <ion-title> Student</ion-title>
-
+    <!-- (click)="deleteStudent()" -->
     <ion-button slot="end" (click)="deleteStudent()">
       <ion-icon name="close"></ion-icon>
     </ion-button>
+
+
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
   <ion-card>
-    <img src="http://www.auroracl.com/template/resources/images/news/quote1494914715.png" />
+    <img src="http://www.auroracl.com/template/resources/images/news/quote1494914715.png" height="250px" />
     <ion-card-header>
       <ion-card-title>{{singleStudent?.name}}</ion-card-title>
     </ion-card-header>
@@ -24,8 +25,6 @@
 
 
     </ion-card-content>
-    Interests:
-
 
 
   </ion-card>

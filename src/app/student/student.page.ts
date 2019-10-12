@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { AlertController } from '@ionic/angular';
+import { EverythingstudentService } from './../everythingstudent.service';
 import { StudentsListService } from '../students-list.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class StudentPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private alertController: AlertController,
+    private everythingstudentService: EverythingstudentService,
     private studentsListService: StudentsListService
   ) {}
 
@@ -22,7 +24,8 @@ export class StudentPage implements OnInit {
   singleStudent;
 
   ngOnInit() {
-    this.students = this.studentsListService.getAllStudents();
+    this.students = this.everythingstudentService.returnStudentsList();
+    // this.students = this.studentsListService.getAllStudents();
 
     this.route.paramMap.subscribe(paramMap => {
       const val = paramMap.get('studentid');
@@ -34,20 +37,22 @@ export class StudentPage implements OnInit {
   }
 
   async deleteStudent() {
-    console.log('deleteStudent');
-
-    this.studentsListService.deleteAStudent(this.singleStudent.id);
+    console.log('deleteStudent', this.singleStudent);
 
     const alert = await this.alertController.create({
-      header: 'Success',
+      header: 'Alert',
       // subHeader: 'Subtitle',
-      message: `${this.singleStudent.name} has been removed successfully`,
+      message: `Are you sure you want to remove ${this.singleStudent.name}?`,
       // buttons: ['OK']
       buttons: [
+        {
+          text: 'Cancel'
+        },
         {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
+            this.everythingstudentService.deleteStudent(this.singleStudent.id);
             this.router.navigateByUrl('/studentslist');
           }
         }
@@ -55,5 +60,30 @@ export class StudentPage implements OnInit {
     });
 
     alert.present();
+
+    // this.everythingstudentService.deleteStudent(this.singleStudent.id);
+    // const url = `studentslist`;
+
+    // this.router.navigateByUrl(url);
+
+    // this.studentsListService.deleteAStudent(this.singleStudent.id);
   }
 }
+
+// const alert = await this.alertController.create({
+//   header: 'Success',
+//   // subHeader: 'Subtitle',
+//   message: `${this.singleStudent.name} has been removed successfully`,
+//   buttons: ['OK']
+//   // buttons: [
+//   //   {
+//   //     text: 'Okay',
+//   //     handler: () => {
+//   //       console.log('Confirm Okay');
+//   //       this.router.navigateByUrl('/studentslist');
+//   //     }
+//   //   }
+//   // ]
+// });
+
+// alert.present();
